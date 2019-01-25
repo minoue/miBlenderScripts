@@ -2,32 +2,41 @@
 
 
 
-## Keymap
+## Keymap変更点
 
 
 
 **Alt navigation**
 
-3D View → 3D view(globa) → Rotate view
+MayaのAltナビゲーション。
 
-3D View → 3D view(globa) → Pan view
+* 3D View → 3D view(globa) → Pan View → 'Alt Middle Mouse'に変更
+
+* 3D View → 3D view(globa) → Zoom View → 'Alt Right Mouse'に変更
 
 
 
 **F key focus**
 
-3D View → 3D View (global) → View Selected → F
+フォーカスは頻繁に使うのでMayaと同じFキーに変更。デフォルトの'Numpad . 'は使用頻度の割に遠すぎる。
 
-3D View → Mesh → Mesh (global) → New keymap (view3d.view_selected)
+* 3D View → 3D View (global) → View Selected → Fに変更
 
-3D View → Mesh → Mesh (global) → Disable Make Edge/Face
+* 3D View → Mesh → Mesh (global) → New keymap (view3d.view_selected)を作成
+
+* 3D View → Mesh → Mesh (global) → Make Edge/Face → Disable
 
 
 
 **Disable tweak move/translate**
 
-3D View → 3D view(global) → Move(Tweak Left Any) disable
+マニピュレーターの外をドラッグするとオブジェクトが動いてしまうのを防止
 
-3D View → Object Mode → 3D View Tool: Transform → disable
+* 3D View → 3D view(global) → Move(Tweak Left Any) → Disable
 
-3D View → Object Mode → 3D View Tool: Move→ disable
+* 3D View → Object Mode → 3D View Tool: Transform → Disable
+
+* 3D View → Object Mode → 3D View Tool: Move→ Disable
+
+
+
