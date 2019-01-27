@@ -75,6 +75,33 @@ class MPM_OT_object_mode(bpy.types.Operator):
         return {'FINISHED'}
 
 
+class MPM_OT_move(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_move"
+    bl_label = ""
+
+    def execute(self, context):
+        bpy.ops.wm.tool_set_by_name(name="Move")
+        return {'FINISHED'}
+
+
+class MPM_OT_rotate(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_rotate"
+    bl_label = ""
+
+    def execute(self, context):
+        bpy.ops.wm.tool_set_by_name(name="Rotate")
+        return {'FINISHED'}
+
+
+class MPM_OT_scale(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_scale"
+    bl_label = ""
+
+    def execute(self, context):
+        bpy.ops.wm.tool_set_by_name(name="Scale")
+        return {'FINISHED'}
+
+
 class VIEW3D_MT_maya_pie_menu(Menu):
     bl_label = "View"
     bl_idname = "VIEW3D_MT_maya_pie_menu"
@@ -104,16 +131,16 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         pie.operator("object.mpm_ot_edge_mode")
 
         # 10:30
-        pie.operator("object.mpm_ot_dummy_command")
+        pie.operator("object.mpm_ot_rotate", text="Rotate")
 
         # 1:30
         pie.operator("object.mpm_ot_object_mode")
 
         # 7:30
-        pie.operator("object.mpm_ot_dummy_command")
+        pie.operator("object.mpm_ot_move", text="Translate")
 
         # 4:30
-        pie.operator("object.mpm_ot_dummy_command")
+        pie.operator("object.mpm_ot_scale", text="Scale")
 
 
 classes = (
@@ -123,6 +150,9 @@ classes = (
     MPM_OT_edge_mode,
     MPM_OT_face_mode,
     MPM_OT_object_mode,
+    MPM_OT_move,
+    MPM_OT_rotate,
+    MPM_OT_scale,
 )
 
 
