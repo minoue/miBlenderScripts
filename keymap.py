@@ -4,7 +4,7 @@ keyconfig_data = \
   {"items":
    [("view2d.scroller_activate", {"type": 'LEFTMOUSE', "value": 'PRESS'}, None),
     ("view2d.scroller_activate", {"type": 'MIDDLEMOUSE', "value": 'PRESS'}, None),
-    ("view2d.pan", {"type": 'MIDDLEMOUSE', "value": 'PRESS', "alt": True}, None),
+    ("view2d.pan", {"type": 'MIDDLEMOUSE', "value": 'PRESS'}, None),
     ("view2d.pan", {"type": 'MIDDLEMOUSE', "value": 'PRESS', "shift": True}, None),
     ("view2d.pan", {"type": 'TRACKPADPAN', "value": 'ANY'}, None),
     ("view2d.scroll_right", {"type": 'WHEELDOWNMOUSE', "value": 'PRESS', "ctrl": True}, None),
@@ -25,6 +25,7 @@ keyconfig_data = \
     ("view2d.zoom", {"type": 'RIGHTMOUSE', "value": 'PRESS', "alt": True}, None),
     ("view2d.zoom", {"type": 'TRACKPADZOOM', "value": 'ANY'}, None),
     ("view2d.zoom_border", {"type": 'B', "value": 'PRESS', "shift": True}, None),
+    ("view2d.pan", {"type": 'MIDDLEMOUSE', "value": 'PRESS', "alt": True}, None),
     ],
    },
   ),
