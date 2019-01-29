@@ -113,6 +113,7 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
         # 9:00
         pie.operator("object.mpm_ot_vertex_mode")
+
         # 3:00
         mode = getMode()
         if mode == "VERTEX":
@@ -131,16 +132,16 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         pie.operator("object.mpm_ot_edge_mode")
 
         # 10:30
-        pie.operator("object.mpm_ot_rotate", text="Rotate")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
         # 1:30
         pie.operator("object.mpm_ot_object_mode")
 
         # 7:30
-        pie.operator("object.mpm_ot_move", text="Translate")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
         # 4:30
-        pie.operator("object.mpm_ot_scale", text="Scale")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
 
 classes = (
