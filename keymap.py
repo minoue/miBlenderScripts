@@ -1,5 +1,33 @@
 keyconfig_data = \
-[("View2D",
+[("3D View Tool: Select Box",
+  {"space_type": 'VIEW_3D', "region_type": 'WINDOW'},
+  {"items":
+   [("view3d.select_box", {"type": 'EVT_TWEAK_L', "value": 'ANY'}, None),
+    ("view3d.select_box",
+     {"type": 'EVT_TWEAK_L', "value": 'ANY', "shift": True},
+     {"properties":
+      [("mode", 'XOR'),
+       ],
+      },
+     ),
+    ("view3d.select_box",
+     {"type": 'EVT_TWEAK_L', "value": 'ANY', "ctrl": True},
+     {"properties":
+      [("mode", 'SUB'),
+       ],
+      },
+     ),
+    ("view3d.select_box",
+     {"type": 'EVT_TWEAK_L', "value": 'ANY', "shift": True, "ctrl": True},
+     {"properties":
+      [("mode", 'AND'),
+       ],
+      },
+     ),
+    ],
+   },
+  ),
+ ("View2D",
   {"space_type": 'EMPTY', "region_type": 'WINDOW'},
   {"items":
    [("view2d.scroller_activate", {"type": 'LEFTMOUSE', "value": 'PRESS'}, None),
