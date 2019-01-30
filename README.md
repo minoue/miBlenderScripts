@@ -68,6 +68,10 @@ https://blender.stackexchange.com/questions/124195/blender-2-8-enter-select-box-
 * 3D View → Object Mode → 3D View Tool: Rotate → Rotate → Add Ctrl modifier
 * 3D View → Object Mode → 3D View Tool: Scale → Scale→ Add Ctrl modifier
 
+**Box select**
+通常のBox選択も同じ挙動に
+* 3D View -> Object Mode -> 3D View Tool: Select Box -> 上から二つ目のModeをDifferenceに。
+
 ### View 2D
 
 Altナビゲーション
