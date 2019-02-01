@@ -78,3 +78,9 @@ Altナビゲーション
 
 * View 2D →  Zoom 2D View → "Alt Right Mouse"に変更
 * View 2D → Add New → view2d.pan : Alt Middle Mouse
+
+### Knife Tool
+
+右クリックで次のカット（Enterで確定する必要あり）
+* 3D View -> Knife Tool Modal Map -> Cancel -> Disable
+* 3D View -> Knife Tool Modal Map -> New Keymap (End Current Cut: Right Mouse)
