@@ -69,12 +69,13 @@ https://blender.stackexchange.com/questions/124195/blender-2-8-enter-select-box-
 * 3D View → Object Mode → 3D View Tool: Scale → Scale→ Add Ctrl modifier
 
 **Box select**
+
 通常のBox選択も同じ挙動に
 * 3D View -> Object Mode -> 3D View Tool: Select Box -> 上から二つ目のModeをDifferenceに。
 
 ### View 2D
 
-Altナビゲーション
+node editorやCompositeでもAltナビゲーション
 
 * View 2D →  Zoom 2D View → "Alt Right Mouse"に変更
 * View 2D → Add New → view2d.pan : Alt Middle Mouse
@@ -88,8 +89,10 @@ Altナビゲーション
 ## Keymap以外の設定
 ### シーンプロパティ
 #### Units
+1 unit = 1cm にする
 * Unit System : Metric
 * Unit Scale : 0.01
+
 
 すると３Dビューのグリッドがでかくなるのでグリッドサイズを調整する
  
