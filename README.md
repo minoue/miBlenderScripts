@@ -84,3 +84,17 @@ Altナビゲーション
 右クリックで次のカット（Enterで確定する必要あり）
 * 3D View -> Knife Tool Modal Map -> Cancel -> Disable
 * 3D View -> Knife Tool Modal Map -> New Keymap (End Current Cut: Right Mouse)
+
+## Keymap以外の設定
+### シーンプロパティ
+#### Units
+* Unit System : Metric
+* Unit Scale : 0.01
+
+すると３Dビューのグリッドがでかくなるのでグリッドサイズを調整する
+ 
+![](./img/gridSize.png)
+
+Mayaのデフォルトと一緒になる
+
+![](./img/sceneScale.png)
