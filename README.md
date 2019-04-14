@@ -32,15 +32,15 @@ MayaのAltナビゲーション。
 
 Mayaと同じWERキーによるマニピュレータの切り替え
 
-* 3D View → Object Mode → Object Mode (Global) → New Keymap (W:Move)
-* 3D View → Object Mode → Object Mode (Global) → New Keymap (E:Rotate)
-* 3D View → Object Mode → Object Mode (Global) → New Keymap (R:Scale)
+* 3D View → Object Mode → Object Mode (Global) → New Keymap W: wm.tool_set_by_id, builtin.move
+* 3D View → Object Mode → Object Mode (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
+* 3D View → Object Mode → Object Mode (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale
 
 **WER mesh mode**
 
-* 3D View → Mesh → Mesh (Global) → New Keymap (W:Move)
-* 3D View → Mesh → Mesh (Global) → New Keymap (E:Rotate)
-* 3D View → Mesh → Mesh (Global) → New Keymap (R:Scale)
+* 3D View → Mesh → Mesh (Global) → New Keymap W: wm.tool_set_by_id, builtin.move  
+* 3D View → Mesh → Mesh (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
+* 3D View → Mesh → Mesh (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale 
 * 3D View → Mesh → Mesh (Global) → Extrude and Move on Normals → Disable
 
 **Box Selection while using transform manipulator**
