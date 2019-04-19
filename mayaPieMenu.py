@@ -159,14 +159,10 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
         # 3:00
         mode = getMode()
-        if mode == "VERTEX":
-            pie.operator("wm.call_menu", text="Vertex Context Menu").name = "VIEW3D_MT_edit_mesh_vertices"
-        elif mode == "EDGE":
-            pie.operator("wm.call_menu",text="Edge Context Menu").name = "VIEW3D_MT_edit_mesh_edges"
-        elif mode == "FACE":
-            pie.operator("wm.call_menu",text="Face Context Menu").name = "VIEW3D_MT_edit_mesh_faces"
+        if mode == "OBJECT":
+            pie.operator("wm.call_menu", text="Object Context Menu").name = "VIEW3D_MT_object_context_menu"
         else:
-            pie.operator("wm.call_menu",text="Object Context Menu").name = "VIEW3D_MT_object_specials"
+            pie.operator("wm.call_menu", text="Vertex Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
 
         # 6:00
         pie.operator("object.mpm_ot_face_mode")
