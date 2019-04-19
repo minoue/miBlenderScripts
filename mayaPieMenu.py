@@ -5,7 +5,7 @@ bl_info = {
     "name": "MayaPieMenu",
     "description": "View Modes",
     "author": "Michitaka Inoue",
-    "version": (0, 1, 0),
+    "version": (0, 1, 1),
     "blender": (2, 80, 0),
     # "location": "Right",
     "warning": "",
@@ -26,6 +26,49 @@ def getMode():
             return "EDGE"
         elif edit_mode[2] is True:
             return "FACE"
+
+
+class MPM_OT_higher_subdiv(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_higher_subdiv"
+    bl_label = "Subdiv+"
+
+    def execute(self, context):
+        sel = bpy.context.selected_objects
+        for i in sel:
+
+            # Set active object
+            bpy.context.view_layer.objects.active = i
+
+            mods = [m.type for m in i.modifiers]
+            if 'SUBSURF' in mods:
+                # If subsurf modifier exists, add +1
+                currentLevel = i.modifiers['Subdivision'].levels
+                newLevel = currentLevel + 1
+                i.modifiers['Subdivision'].levels = newLevel
+            else:
+                # otherwise, add new subsurf modifier
+                bpy.ops.object.modifier_add(type='SUBSURF')
+
+        return {'FINISHED'}
+
+
+class MPM_OT_lower_subdiv(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_lower_subdiv"
+    bl_label = "Subdiv-"
+
+    def execute(self, context):
+        sel = bpy.context.selected_objects
+        for i in sel:
+            mods = [m.type for m in i.modifiers]
+            bpy.context.view_layer.objects.active = i
+            if 'SUBSURF' in mods:
+                currentLevel = i.modifiers['Subdivision'].levels
+                newLevel = currentLevel - 1
+                i.modifiers['Subdivision'].levels = newLevel
+            else:
+                bpy.ops.object.modifier_add(type='SUBSURF')
+
+        return {'FINISHED'}
 
 
 class MPM_OT_dummy_command(bpy.types.Operator):
@@ -138,10 +181,10 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         pie.operator("object.mpm_ot_object_mode")
 
         # 7:30
-        pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("object.mpm_ot_higher_subdiv")
 
         # 4:30
-        pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("object.mpm_ot_lower_subdiv")
 
 
 classes = (
@@ -154,6 +197,8 @@ classes = (
     MPM_OT_move,
     MPM_OT_rotate,
     MPM_OT_scale,
+    MPM_OT_higher_subdiv,
+    MPM_OT_lower_subdiv,
 )
 
 
