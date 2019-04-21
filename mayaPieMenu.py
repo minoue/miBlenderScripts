@@ -182,6 +182,23 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         # 4:30
         pie.operator("object.mpm_ot_lower_subdiv")
 
+        pie.separator()
+        pie.separator()
+
+        bottomMenu = pie.column()
+        bottomMenu.scale_y = 1.4
+        bottomMenu.scale_x = 1.2
+        bottomMenu.separator()
+        bottomMenu.separator()
+        bottomMenu.separator()
+        bottomMenu.separator()
+        bottomMenu.separator()
+        bottomMenu.separator()
+        bottomMenu.operator("object.mpm_ot_dummy_command", text="command1")
+        bottomMenu.operator("object.mpm_ot_dummy_command", text="command2")
+        bottomMenu.operator("object.mpm_ot_dummy_command", text="command3")
+        bottomMenu.operator("object.mpm_ot_dummy_command", text="command4")
+
 
 classes = (
     VIEW3D_MT_maya_pie_menu,
