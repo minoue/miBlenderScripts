@@ -145,6 +145,36 @@ class MPM_OT_scale(bpy.types.Operator):
         return {'FINISHED'}
 
 
+class MPM_OT_localView(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_localview"
+    bl_label = "Local View"
+
+    def execute(self, context):
+        bpy.ops.view3d.localview()
+        return {'FINISHED'}
+
+
+class VIEW3D_MT_maya_viewport_menu(Menu):
+    bl_label = "View"
+    bl_idname = "VIEW3D_MT_maya_viewport_menu"
+
+    def draw(self, context):
+        layout = self.layout
+
+        overlay = bpy.context.space_data.overlay
+
+        pie = layout.menu_pie()
+
+        pie.prop(overlay, 'show_wireframes', text="Wireframe On Shaded")
+        pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("object.mpm_ot_localview", text="Isolate Selected")
+        pie.operator("object.mpm_ot_dummy_command", text="")
+
+
 class VIEW3D_MT_maya_pie_menu(Menu):
     bl_label = "View"
     bl_idname = "VIEW3D_MT_maya_pie_menu"
@@ -171,7 +201,8 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         pie.operator("object.mpm_ot_edge_mode")
 
         # 10:30
-        pie.operator("object.mpm_ot_dummy_command", text="")
+        # pie.operator("object.mpm_ot_dummy_command", text="")
+        pie.operator("wm.call_menu_pie", text="Viewport Menu").name = "VIEW3D_MT_maya_viewport_menu"
 
         # 1:30
         pie.operator("object.mpm_ot_object_mode")
@@ -202,6 +233,7 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
 classes = (
     VIEW3D_MT_maya_pie_menu,
+    VIEW3D_MT_maya_viewport_menu,
     MPM_OT_dummy_command,
     MPM_OT_vertex_mode,
     MPM_OT_edge_mode,
@@ -212,6 +244,7 @@ classes = (
     MPM_OT_scale,
     MPM_OT_higher_subdiv,
     MPM_OT_lower_subdiv,
+    MPM_OT_localView,
 )
 
 
