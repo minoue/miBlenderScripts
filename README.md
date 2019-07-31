@@ -11,7 +11,6 @@ MayaのAltナビゲーション。
 * 3D View → 3D view(global) → Pan View → 'Alt Middle Mouse'に変更
 * 3D View → 3D view(global) → Zoom View → 'Alt Right Mouse'に変更
 
-
 **F key focus**
 
 フォーカスは頻繁に使うのでMayaと同じFキーに変更。デフォルトの'Numpad . 'は使用頻度の割に遠すぎる。
@@ -62,7 +61,7 @@ https://blender.stackexchange.com/questions/124195/blender-2-8-enter-select-box-
     * Mode: Difference
 * 3D View Tool: Rotate, 3D View Tool: Scaleにも同じ変更
 
-失われた本来の挙動をCtrlで呼び出せるようにする
+本来の挙動をCtrlで呼び出せるようにする
 
 * 3D View → Object Mode → 3D View Tool: Move → Move → Add Ctrl modifier
 * 3D View → Object Mode → 3D View Tool: Rotate → Rotate → Add Ctrl modifier
@@ -79,6 +78,11 @@ node editorやCompositeでもAltナビゲーション
 
 * View 2D →  Zoom 2D View → "Alt Right Mouse"に変更
 * View 2D → Add New → view2d.pan : Alt Middle Mouse
+
+### Image
+Image viewやUV viewでもAltナビゲーション
+* Image → Image(global) → Pan View → 'Alt Middle Mouse'に変更
+* Image → Image(global) → Zoom View → 'Alt Right Mouse'に変更
 
 ### Knife Tool
 
@@ -101,3 +105,9 @@ node editorやCompositeでもAltナビゲーション
 Mayaのデフォルトと一緒になる
 
 ![](./img/sceneScale.png)
+
+### カメラ
+
+* Nキー → ビュー → Lock Camera to View ON
+
+    これをしないとカメラビューの時Alt操作でカメラを動かせない
