@@ -8,8 +8,8 @@
 
 MayaのAltナビゲーション。
 
-* 3D View → 3D view(globa) → Pan View → 'Alt Middle Mouse'に変更
-* 3D View → 3D view(globa) → Zoom View → 'Alt Right Mouse'に変更
+* 3D View → 3D view(global) → Pan View → 'Alt Middle Mouse'に変更
+* 3D View → 3D view(global) → Zoom View → 'Alt Right Mouse'に変更
 
 
 **F key focus**
