@@ -91,6 +91,18 @@ Image viewやUV viewでもAltナビゲーション
 * 3D View -> Knife Tool Modal Map -> New Keymap (End Current Cut: Right Mouse)
 
 ## Keymap以外の設定
+
+### Preferences
+#### Input
+* Keyboard : Emulate Numpad (Numpadがない人)
+* Mouse : Emulate 3 button mouse
+
+#### Navigation
+* Zoom : Zoom axis -> Vertical or Horizontal
+	
+	MayaはAltでズームするときに上下左右両方対応しているがBlenderはどちらかしかダメそう。
+普段の手癖に合わせて変更
+
 ### シーンプロパティ
 #### Units
 1 unit = 1cm にする
