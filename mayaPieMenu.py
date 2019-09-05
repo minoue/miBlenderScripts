@@ -1,13 +1,13 @@
 import bpy
 from bpy.types import Menu
 
+
 bl_info = {
     "name": "MayaPieMenu",
     "description": "View Modes",
     "author": "Michitaka Inoue",
-    "version": (0, 1, 1),
+    "version": (0, 2, 0),
     "blender": (2, 80, 0),
-    # "location": "Right",
     "warning": "",
     "wiki_url": "",
     "category": "3d View"
@@ -184,15 +184,20 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
         pie = layout.menu_pie()
 
+        mode = getMode()
+
         # 9:00
         pie.operator("object.mpm_ot_vertex_mode")
 
         # 3:00
-        mode = getMode()
         if mode == "OBJECT":
-            pie.operator("wm.call_menu", text="Object Context Menu").name = "VIEW3D_MT_object_context_menu"
+            pie.operator(
+                "wm.call_menu",
+                text="Object Context Menu").name = "VIEW3D_MT_object_context_menu"
         else:
-            pie.operator("wm.call_menu", text="Vertex Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
+            pie.operator(
+                "wm.call_menu",
+                text="Vertex Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
 
         # 6:00
         pie.operator("object.mpm_ot_face_mode")
@@ -201,34 +206,65 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         pie.operator("object.mpm_ot_edge_mode")
 
         # 10:30
-        # pie.operator("object.mpm_ot_dummy_command", text="")
-        pie.operator("wm.call_menu_pie", text="Viewport Menu").name = "VIEW3D_MT_maya_viewport_menu"
+        pie.column()
 
         # 1:30
         pie.operator("object.mpm_ot_object_mode")
 
         # 7:30
-        pie.operator("object.mpm_ot_higher_subdiv")
+        # pie.operator("object.mpm_ot_higher_subdiv")
+        pie.column()
 
         # 4:30
-        pie.operator("object.mpm_ot_lower_subdiv")
+        # pie.operator("object.mpm_ot_lower_subdiv")
+        pie.column()
 
         pie.separator()
         pie.separator()
 
-        bottomMenu = pie.column()
-        bottomMenu.scale_y = 1.4
-        bottomMenu.scale_x = 1.2
-        bottomMenu.separator()
-        bottomMenu.separator()
-        bottomMenu.separator()
-        bottomMenu.separator()
-        bottomMenu.separator()
-        bottomMenu.separator()
-        bottomMenu.operator("object.mpm_ot_dummy_command", text="command1")
-        bottomMenu.operator("object.mpm_ot_dummy_command", text="command2")
-        bottomMenu.operator("object.mpm_ot_dummy_command", text="command3")
-        bottomMenu.operator("object.mpm_ot_dummy_command", text="command4")
+        # Bottom submenus
+        bottom = pie.split().row()
+
+        left_box1 = bottom.column()
+        left_box1.separator()
+        left_box1.separator()
+        left_box1.separator()
+        left_box1.separator()
+        left_box1.separator()
+        left_box1.separator()
+        sub_menu1 = left_box1.box()
+        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
+
+        left_box2 = bottom.column()
+        left_box2.separator()
+        left_box2.separator()
+        left_box2.separator()
+        left_box2.separator()
+        left_box2.separator()
+        left_box2.separator()
+        sub_menu2 = left_box2.box()
+        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
+
+        overlay = bpy.context.space_data.overlay
+
+        # Top submenus
+        top = pie.column()
+        top_menu = top.box().row()
+        top_menu.operator("object.mpm_ot_localview", text="Isolate Selected")
+        top_menu.prop(overlay, 'show_wireframes', text="Wireframe On Shaded")
+        top_menu.operator("object.mpm_ot_dummy_command", text="cmd A")
+        top_menu.operator("object.mpm_ot_dummy_command", text="cmd B")
+        top.separator()
+        top.separator()
+        top.separator()
+        top.separator()
+        top.separator()
 
 
 classes = (
