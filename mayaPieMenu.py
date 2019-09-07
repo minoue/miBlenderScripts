@@ -194,6 +194,14 @@ class VIEW3D_MT_maya_pie_menu(Menu):
             pie.operator(
                 "wm.call_menu",
                 text="Object Context Menu").name = "VIEW3D_MT_object_context_menu"
+        elif mode == "EDGE":
+            pie.operator(
+                "wm.call_menu",
+                text="Edge Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
+        elif mode == "FACE":
+            pie.operator(
+                "wm.call_menu",
+                text="Face Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
         else:
             pie.operator(
                 "wm.call_menu",
