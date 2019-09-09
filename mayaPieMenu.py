@@ -6,7 +6,7 @@ bl_info = {
     "name": "MayaPieMenu",
     "description": "View Modes",
     "author": "Michitaka Inoue",
-    "version": (0, 2, 0),
+    "version": (0, 2, 1),
     "blender": (2, 80, 0),
     "warning": "",
     "wiki_url": "",
@@ -154,27 +154,6 @@ class MPM_OT_localView(bpy.types.Operator):
         return {'FINISHED'}
 
 
-class VIEW3D_MT_maya_viewport_menu(Menu):
-    bl_label = "View"
-    bl_idname = "VIEW3D_MT_maya_viewport_menu"
-
-    def draw(self, context):
-        layout = self.layout
-
-        overlay = bpy.context.space_data.overlay
-
-        pie = layout.menu_pie()
-
-        pie.prop(overlay, 'show_wireframes', text="Wireframe On Shaded")
-        pie.operator("object.mpm_ot_dummy_command", text="")
-        pie.operator("object.mpm_ot_dummy_command", text="")
-        pie.operator("object.mpm_ot_dummy_command", text="")
-        pie.operator("object.mpm_ot_dummy_command", text="")
-        pie.operator("object.mpm_ot_dummy_command", text="")
-        pie.operator("object.mpm_ot_localview", text="Isolate Selected")
-        pie.operator("object.mpm_ot_dummy_command", text="")
-
-
 class VIEW3D_MT_maya_pie_menu(Menu):
     bl_label = "View"
     bl_idname = "VIEW3D_MT_maya_pie_menu"
@@ -275,9 +254,45 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         top.separator()
 
 
+class VIEW3D_MT_maya_pie_menu_shift(Menu):
+    bl_label = "View"
+    bl_idname = "VIEW3D_MT_maya_pie_menu_shift"
+
+    def draw(self, context):
+        layout = self.layout
+
+        pie = layout.menu_pie()
+
+        mode = getMode()
+
+        # 9:00
+        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+
+        # 3:00
+        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+
+        # 6:00
+        pie.operator("view3d.edit_mesh_extrude_move_normal", text="Extrude")
+
+        # 12:00
+        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+
+        # 10:30
+        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+
+        # 1:30
+        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+
+        # 7:30
+        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+
+        # 4:30
+        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+
+
 classes = (
     VIEW3D_MT_maya_pie_menu,
-    VIEW3D_MT_maya_viewport_menu,
+    VIEW3D_MT_maya_pie_menu_shift,
     MPM_OT_dummy_command,
     MPM_OT_vertex_mode,
     MPM_OT_edge_mode,
