@@ -263,31 +263,31 @@ class VIEW3D_MT_maya_pie_menu_shift(Menu):
 
         pie = layout.menu_pie()
 
-        mode = getMode()
+        # mode = getMode()
 
         # 9:00
-        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+        pie.operator("mesh.knife_tool", text="Knife")
 
         # 3:00
-        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
         # 6:00
         pie.operator("view3d.edit_mesh_extrude_move_normal", text="Extrude")
 
         # 12:00
-        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
         # 10:30
-        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
         # 1:30
-        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
         # 7:30
-        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
         # 4:30
-        pie.operator("object.mpm_ot_dummy_command", text="dummy_command")
+        pie.operator("object.mpm_ot_dummy_command", text="")
 
 
 classes = (
