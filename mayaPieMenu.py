@@ -166,37 +166,41 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         mode = getMode()
 
         # 9:00
-        pie.operator("object.mpm_ot_vertex_mode")
+        pie.operator("object.mpm_ot_vertex_mode", icon="VERTEXSEL")
 
         # 3:00
         if mode == "OBJECT":
             pie.operator(
                 "wm.call_menu",
-                text="Object Context Menu").name = "VIEW3D_MT_object_context_menu"
+                text="Object Context Menu",
+                icon="CUBE").name = "VIEW3D_MT_object_context_menu"
         elif mode == "EDGE":
             pie.operator(
                 "wm.call_menu",
-                text="Edge Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
+                text="Edge Context Menu",
+                icon="EDGESEL").name = "VIEW3D_MT_edit_mesh_context_menu"
         elif mode == "FACE":
             pie.operator(
                 "wm.call_menu",
-                text="Face Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
+                text="Face Context Menu",
+                icon="FACESEL").name = "VIEW3D_MT_edit_mesh_context_menu"
         else:
             pie.operator(
                 "wm.call_menu",
-                text="Vertex Context Menu").name = "VIEW3D_MT_edit_mesh_context_menu"
+                text="Vertex Context Menu",
+                icon="VERTEXSEL").name = "VIEW3D_MT_edit_mesh_context_menu"
 
         # 6:00
-        pie.operator("object.mpm_ot_face_mode")
+        pie.operator("object.mpm_ot_face_mode", icon="FACESEL")
 
         # 12:00
-        pie.operator("object.mpm_ot_edge_mode")
+        pie.operator("object.mpm_ot_edge_mode", icon="EDGESEL")
 
         # 10:30
         pie.column()
 
         # 1:30
-        pie.operator("object.mpm_ot_object_mode")
+        pie.operator("object.mpm_ot_object_mode", icon="CUBE")
 
         # 7:30
         # pie.operator("object.mpm_ot_higher_subdiv")
@@ -220,10 +224,10 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         left_box1.separator()
         left_box1.separator()
         sub_menu1 = left_box1.box()
-        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
-        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
-        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
-        sub_menu1.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu1.operator(
+            "object.mpm_ot_dummy_command", text="cmd", icon="BLENDER")
+        sub_menu1.operator(
+            "object.mpm_ot_dummy_command", text="cmd", icon="BLENDER")
 
         left_box2 = bottom.column()
         left_box2.separator()
@@ -233,20 +237,28 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         left_box2.separator()
         left_box2.separator()
         sub_menu2 = left_box2.box()
-        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
-        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
-        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
-        sub_menu2.operator("object.mpm_ot_dummy_command", text="cmd")
+        sub_menu2.operator(
+            "object.mpm_ot_dummy_command", text="cmd", icon="BLENDER")
+        sub_menu2.operator(
+            "object.mpm_ot_dummy_command", text="cmd", icon="BLENDER")
 
         overlay = bpy.context.space_data.overlay
 
         # Top submenus
         top = pie.column()
         top_menu = top.box().row()
-        top_menu.operator("object.mpm_ot_localview", text="Isolate Selected")
-        top_menu.prop(overlay, 'show_wireframes', text="Wireframe On Shaded")
-        top_menu.operator("object.mpm_ot_dummy_command", text="cmd A")
-        top_menu.operator("object.mpm_ot_dummy_command", text="cmd B")
+        top_menu.operator(
+            "object.mpm_ot_localview",
+            text="Isolate Selected",
+            icon="HIDE_OFF")
+        top_menu.prop(
+            overlay,
+            'show_wireframes',
+            text="Wireframe On Shaded")
+        top_menu.operator(
+            "object.mpm_ot_dummy_command", text="cmd A", icon="BLENDER")
+        top_menu.operator(
+            "object.mpm_ot_dummy_command", text="cmd B", icon="BLENDER")
         top.separator()
         top.separator()
         top.separator()
