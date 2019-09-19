@@ -20,17 +20,21 @@ def getMode():
         return
 
     object_mode = bpy.context.active_object.mode
+    active_object = bpy.context.active_object.type
 
     if object_mode == "OBJECT":
         return "OBJECT"
     else:
-        edit_mode = tuple(bpy.context.tool_settings.mesh_select_mode)
-        if edit_mode[0] is True:
-            return "VERTEX"
-        elif edit_mode[1] is True:
-            return "EDGE"
-        elif edit_mode[2] is True:
-            return "FACE"
+        if active_object == "MESH":
+            edit_mode = tuple(bpy.context.tool_settings.mesh_select_mode)
+            if edit_mode[0] is True:
+                return "VERTEX"
+            elif edit_mode[1] is True:
+                return "EDGE"
+            elif edit_mode[2] is True:
+                return "FACE"
+        elif active_object == "CURVE":
+            return "EDIT"
 
 
 class MPM_OT_higher_subdiv(bpy.types.Operator):
@@ -295,12 +299,22 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
     def curve_menu(self, pie):
 
+        mode = getMode()
+
         # 9:00
         pie.operator("object.mpm_ot_edit_mode", icon="CURVE_PATH")
 
         # 3:00
-        pie.operator("wm.call_menu", text="Object Context Menu", icon="CUBE").name = "VIEW3D_MT_object_context_menu"
-
+        if mode == "OBJECT":
+            pie.operator(
+                "wm.call_menu",
+                text="Curve Context Menu",
+                icon="CUBE").name = "VIEW3D_MT_object_context_menu"
+        else:
+            pie.operator(
+                "wm.call_menu",
+                text="Edit Curve Context Menu",
+                icon="CUBE").name = "VIEW3D_MT_edit_curve_context_menu"
         # 6:00
         pie.column()
 
