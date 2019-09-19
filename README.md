@@ -1,4 +1,11 @@
 # mayaっぽいkeymap
+Navigationや選択の挙動はもうちょっとMaya寄りに、かつ基本的なショートカットは出来るだけBlenderのデフォルトまま、そんなプリセット。
+
+## Install
+
+1. Preferences -> Add-ons -> Install -> mayaPieMenu.py
+2. Preferences -> Keymap -> Import -> keymap.py
+3. Preferences -> Input -> Mouse -> Emulate 3 Button Mouse(ON)
 
 ## Keymap変更点
 
@@ -37,9 +44,9 @@ Mayaと同じWERキーによるマニピュレータの切り替え
 
 **WER mesh mode**
 
-* 3D View → Mesh → Mesh (Global) → New Keymap W: wm.tool_set_by_id, builtin.move  
+* 3D View → Mesh → Mesh (Global) → New Keymap W: wm.tool_set_by_id, builtin.move
 * 3D View → Mesh → Mesh (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
-* 3D View → Mesh → Mesh (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale 
+* 3D View → Mesh → Mesh (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale
 * 3D View → Mesh → Mesh (Global) → Extrude and Move on Normals → Disable
 
 **Box Selection while using transform manipulator**
@@ -99,7 +106,7 @@ Image viewやUV viewでもAltナビゲーション
 
 #### Navigation
 * Zoom : Zoom axis -> Vertical or Horizontal
-	
+
 	MayaはAltでズームするときに上下左右両方対応しているがBlenderはどちらかしかダメそう。
 普段の手癖に合わせて変更
 
@@ -111,7 +118,7 @@ Image viewやUV viewでもAltナビゲーション
 
 
 すると３Dビューのグリッドがでかくなるのでグリッドサイズを調整する
- 
+
 ![](./img/gridSize.png)
 
 Mayaのデフォルトと一緒になる
