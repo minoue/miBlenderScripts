@@ -6,7 +6,7 @@ bl_info = {
     "name": "MayaPieMenu",
     "description": "View Modes",
     "author": "Michitaka Inoue",
-    "version": (0, 2, 1),
+    "version": (0, 2, 2),
     "blender": (2, 80, 0),
     "warning": "",
     "wiki_url": "",
@@ -123,6 +123,15 @@ class MPM_OT_object_mode(bpy.types.Operator):
         return {'FINISHED'}
 
 
+class MPM_OT_edit_mode(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_edit_mode"
+    bl_label = "Edit Mode"
+
+    def execute(self, context):
+        bpy.ops.object.mode_set(mode='EDIT')
+        return {'FINISHED'}
+
+
 class MPM_OT_move(bpy.types.Operator):
     bl_idname = "object.mpm_ot_move"
     bl_label = ""
@@ -165,8 +174,22 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
     def draw(self, context):
         layout = self.layout
-
         pie = layout.menu_pie()
+
+        obj = bpy.context.object
+
+        if obj.type == "MESH":
+            self.mesh_menu(pie)
+        elif obj.type == "CURVE":
+            self.curve_menu(pie)
+        elif obj.type == "CAMERA":
+            pass
+        elif obj.type == "LIGHT":
+            pass
+        else:
+            pass
+
+    def mesh_menu(self, pie):
 
         mode = getMode()
 
@@ -270,6 +293,32 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         top.separator()
         top.separator()
 
+    def curve_menu(self, pie):
+
+        # 9:00
+        pie.operator("object.mpm_ot_edit_mode", icon="CURVE_PATH")
+
+        # 3:00
+        pie.operator("wm.call_menu", text="Object Context Menu", icon="CUBE").name = "VIEW3D_MT_object_context_menu"
+
+        # 6:00
+        pie.column()
+
+        # 12:00
+        pie.column()
+
+        # 10:30
+        pie.column()
+
+        # 1:30
+        pie.operator("object.mpm_ot_object_mode", icon="CUBE")
+
+        # 7:30
+        pie.column()
+
+        # 4:30
+        pie.column()
+
 
 class VIEW3D_MT_maya_pie_menu_shift(Menu):
     bl_label = "View"
@@ -315,6 +364,7 @@ classes = (
     MPM_OT_edge_mode,
     MPM_OT_face_mode,
     MPM_OT_object_mode,
+    MPM_OT_edit_mode,
     MPM_OT_move,
     MPM_OT_rotate,
     MPM_OT_scale,
