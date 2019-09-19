@@ -15,7 +15,12 @@ bl_info = {
 
 
 def getMode():
+    selected_objects = bpy.context.selected_objects
+    if len(selected_objects) == 0:
+        return
+
     object_mode = bpy.context.active_object.mode
+
     if object_mode == "OBJECT":
         return "OBJECT"
     else:
