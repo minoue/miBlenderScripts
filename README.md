@@ -11,14 +11,27 @@ Navigationや選択の挙動はもうちょっとMaya寄りに、かつ基本的
 
 ### 3D View
 
-**Alt navigation**
+#### Custom Pie Menu
+
+* 3D View → Object Mode → Object Mode (Global) → Disable: Call Menu(Right Mouse)
+* 3D View → Object Mode → Object Mode (Global) → New Keymap
+* 3D View → Mesh → Mesh (Global) → Disable: Call Menu(Right Mouse)
+* 3D View → Mesh → Mesh (Global) → New keymap
+* 3D View → Curve → Curve (Global) → Disable: Call Menu(Right Mouse)
+* 3D View → Curve → Curve (Global) → New keymap
+
+* **New keymap**
+
+    ![](./img/pieMenu_keymap.png)
+
+#### Alt navigation
 
 MayaのAltナビゲーション。
 
 * 3D View → 3D view(global) → Pan View → 'Alt Middle Mouse'に変更
 * 3D View → 3D view(global) → Zoom View → 'Alt Right Mouse'に変更
 
-**F key focus**
+#### F key focus
 
 フォーカスは頻繁に使うのでMayaと同じFキーに変更。デフォルトの'Numpad . 'は使用頻度の割に遠すぎる。
 
@@ -27,14 +40,14 @@ MayaのAltナビゲーション。
 * 3D View → Mesh → Mesh (global) → Make Edge/Face → Disable
 
 
-**Disable tweak move/translate**
+#### Disable tweak move/translate
 
 マニピュレーターの外をドラッグするとオブジェクトが動いてしまうのを防止
 
 * 3D View → 3D View(global) → Move(Tweak Left Any) → Disable
 * 3D View → Object Mode → 3D View Tool: Transform → Disable
 
-**WER object mode**
+#### WER object mode
 
 Mayaと同じWERキーによるマニピュレータの切り替え
 
@@ -42,14 +55,14 @@ Mayaと同じWERキーによるマニピュレータの切り替え
 * 3D View → Object Mode → Object Mode (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
 * 3D View → Object Mode → Object Mode (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale
 
-**WER mesh mode**
+#### WER mesh mode
 
 * 3D View → Mesh → Mesh (Global) → New Keymap W: wm.tool_set_by_id, builtin.move
 * 3D View → Mesh → Mesh (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
 * 3D View → Mesh → Mesh (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale
 * 3D View → Mesh → Mesh (Global) → Extrude and Move on Normals → Disable
 
-**Box Selection while using transform manipulator**
+#### Box Selection while using transform manipulator
 
 マニピュレータを表示させた状態で追加のBox選択を可能にする
 
@@ -74,7 +87,7 @@ https://blender.stackexchange.com/questions/124195/blender-2-8-enter-select-box-
 * 3D View → Object Mode → 3D View Tool: Rotate → Rotate → Add Ctrl modifier
 * 3D View → Object Mode → 3D View Tool: Scale → Scale→ Add Ctrl modifier
 
-**Box select**
+#### Box select
 
 通常のBox選択も同じ挙動に
 * 3D View -> Object Mode -> 3D View Tool: Select Box -> 上から二つ目のModeをDifferenceに。
