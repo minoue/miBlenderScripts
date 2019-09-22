@@ -39,6 +39,13 @@ MayaのAltナビゲーション。
 * 3D View → Mesh → Mesh (global) → New keymap (view3d.view_selected)を作成
 * 3D View → Mesh → Mesh (global) → Make Edge/Face → Disable
 
+    (元々の'Make Edge/Face'は失われるがVertexメニューからアクセス可能)
+
+* 3D View → Curve → Curve (global) → New keymap (view3d.view_selected)を作成
+* 3D View → Curve → Curve (global) → Make Segment → Disable
+
+    (元々の'Make Segment'は失われるがカーブコンテキストメニューからアクセス可能)
+
 
 #### Disable tweak move/translate
 
@@ -54,6 +61,9 @@ Mayaと同じWERキーによるマニピュレータの切り替え
 * 3D View → Object Mode → Object Mode (Global) → New Keymap W: wm.tool_set_by_id, builtin.move
 * 3D View → Object Mode → Object Mode (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
 * 3D View → Object Mode → Object Mode (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale
+* 3D View → Curve → Curve (Global) → New Keymap W: wm.tool_set_by_id, builtin.move
+* 3D View → Curve → Curve (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
+* 3D View → Curve → Curve (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale
 
 #### WER mesh mode
 
