@@ -178,14 +178,14 @@ keyconfig_data = \
       },
      ),
     ("wm.tool_set_by_id",
-     {"type": 'E', "value": 'PRESS'},
+     {"type": 'R', "value": 'PRESS'},
      {"properties":
       [("name", 'builtin.scale'),
        ],
       },
      ),
     ("wm.tool_set_by_id",
-     {"type": 'R', "value": 'PRESS'},
+     {"type": 'E', "value": 'PRESS'},
      {"properties":
       [("name", 'builtin.rotate'),
        ],
