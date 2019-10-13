@@ -133,20 +133,15 @@ Image viewやUV viewでもAltナビゲーション
 	MayaはAltでズームするときに上下左右両方対応しているがBlenderはどちらかしかダメそう。
 普段の手癖に合わせて変更
 
-### シーンプロパティ
+### Scene Properties
 #### Units
+
 1 unit = 1cm にする
+
 * Unit System : Metric
-* Unit Scale : 0.01
-
-
-すると３Dビューのグリッドがでかくなるのでグリッドサイズを調整する
+* Length: Centimeters
 
 ![](./img/gridSize.png)
-
-Mayaのデフォルトと一緒になる
-
-![](./img/sceneScale.png)
 
 ### カメラ
 
