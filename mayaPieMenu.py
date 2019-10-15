@@ -6,7 +6,7 @@ bl_info = {
     "name": "MayaPieMenu",
     "description": "View Modes",
     "author": "Michitaka Inoue",
-    "version": (0, 2, 2),
+    "version": (0, 2, 3),
     "blender": (2, 80, 0),
     "warning": "",
     "wiki_url": "",
@@ -34,6 +34,8 @@ def getMode():
             elif edit_mode[2] is True:
                 return "FACE"
         elif active_object == "CURVE":
+            return "EDIT"
+        elif active_object == "SURFACE":
             return "EDIT"
 
 
@@ -186,6 +188,8 @@ class VIEW3D_MT_maya_pie_menu(Menu):
             self.mesh_menu(pie)
         elif obj.type == "CURVE":
             self.curve_menu(pie)
+        elif obj.type == "SURFACE":
+            self.surface_menu(pie)
         elif obj.type == "CAMERA":
             pass
         elif obj.type == "LIGHT":
@@ -314,6 +318,42 @@ class VIEW3D_MT_maya_pie_menu(Menu):
             pie.operator(
                 "wm.call_menu",
                 text="Edit Curve Context Menu",
+                icon="CUBE").name = "VIEW3D_MT_edit_curve_context_menu"
+        # 6:00
+        pie.column()
+
+        # 12:00
+        pie.column()
+
+        # 10:30
+        pie.column()
+
+        # 1:30
+        pie.operator("object.mpm_ot_object_mode", icon="CUBE")
+
+        # 7:30
+        pie.column()
+
+        # 4:30
+        pie.column()
+
+    def surface_menu(self, pie):
+
+        mode = getMode()
+
+        # 9:00
+        pie.operator("object.mpm_ot_edit_mode", icon="CURVE_PATH")
+
+        # 3:00
+        if mode == "OBJECT":
+            pie.operator(
+                "wm.call_menu",
+                text="Surface Context Menu",
+                icon="CUBE").name = "VIEW3D_MT_object_context_menu"
+        else:
+            pie.operator(
+                "wm.call_menu",
+                text="Edit Surface Context Menu",
                 icon="CUBE").name = "VIEW3D_MT_edit_curve_context_menu"
         # 6:00
         pie.column()
