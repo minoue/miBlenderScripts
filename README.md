@@ -123,17 +123,27 @@ Image viewやUV viewでもAltナビゲーション
 ## Keymap以外の設定
 
 ### Preferences
+
+#### Interface
+* Display : Python Tooltips (Script書くとき便利)
+
+#### Themes
+* Node Editor -> Noodle Curving : 5 or 好きな値(ノードエディタの線はカーブしてほしい)
+
 #### Input
+
 * Keyboard : Emulate Numpad (Numpadがない人)
 * Mouse : Emulate 3 button mouse
 
 #### Navigation
+
 * Zoom : Zoom axis -> Vertical or Horizontal
 
 	MayaはAltでズームするときに上下左右両方対応しているがBlenderはどちらかしかダメそう。
 普段の手癖に合わせて変更
 
 ### Scene Properties
+
 #### Units
 
 1 unit = 1cm にする
