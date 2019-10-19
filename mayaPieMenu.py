@@ -190,12 +190,41 @@ class VIEW3D_MT_maya_pie_menu(Menu):
             self.curve_menu(pie)
         elif obj.type == "SURFACE":
             self.surface_menu(pie)
-        elif obj.type == "CAMERA":
-            pass
-        elif obj.type == "LIGHT":
-            pass
+        elif obj.type == "GPENCIL":
+            self.gpen_menu(pie)
         else:
-            pass
+            self.default_menu(pie, obj.type)
+
+    def default_menu(self, pie, typ):
+
+        # 9:00
+        pie.column()
+
+        # 3:00
+        menu_type = "{} Context Menu".format(typ)
+        if typ == "CAMERA":
+            icon_type = "CAMERA_DATA"
+        elif typ == "LIGHT":
+            icon_type = "LIGHT"
+        pie.operator("wm.call_menu", text=menu_type, icon=icon_type).name = "VIEW3D_MT_object_context_menu" 
+
+        # 6:00
+        pie.column()
+
+        # 12:00
+        pie.column()
+
+        # 10:30
+        pie.column()
+
+        # 1:30
+        pie.column()
+
+        # 7:30
+        pie.column()
+
+        # 4:30
+        pie.column()
 
     def mesh_menu(self, pie):
 
@@ -313,12 +342,12 @@ class VIEW3D_MT_maya_pie_menu(Menu):
             pie.operator(
                 "wm.call_menu",
                 text="Curve Context Menu",
-                icon="CUBE").name = "VIEW3D_MT_object_context_menu"
+                icon="CURVE_DATA").name = "VIEW3D_MT_object_context_menu"
         else:
             pie.operator(
                 "wm.call_menu",
                 text="Edit Curve Context Menu",
-                icon="CUBE").name = "VIEW3D_MT_edit_curve_context_menu"
+                icon="CURVE_DATA").name = "VIEW3D_MT_edit_curve_context_menu"
         # 6:00
         pie.column()
 
@@ -329,7 +358,7 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         pie.column()
 
         # 1:30
-        pie.operator("object.mpm_ot_object_mode", icon="CUBE")
+        pie.operator("object.mpm_ot_object_mode", icon="OUTLINER_OB_CURVE")
 
         # 7:30
         pie.column()
@@ -342,18 +371,54 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         mode = getMode()
 
         # 9:00
-        pie.operator("object.mpm_ot_edit_mode", icon="CURVE_PATH")
+        pie.operator("object.mpm_ot_edit_mode", icon="OUTLINER_DATA_SURFACE")
 
         # 3:00
         if mode == "OBJECT":
             pie.operator(
                 "wm.call_menu",
                 text="Surface Context Menu",
-                icon="CUBE").name = "VIEW3D_MT_object_context_menu"
+                icon="OUTLINER_OB_SURFACE").name = "VIEW3D_MT_object_context_menu"
         else:
             pie.operator(
                 "wm.call_menu",
                 text="Edit Surface Context Menu",
+                icon="OUTLINER_OB_SURFACE").name = "VIEW3D_MT_edit_curve_context_menu"
+        # 6:00
+        pie.column()
+
+        # 12:00
+        pie.column()
+
+        # 10:30
+        pie.column()
+
+        # 1:30
+        pie.operator("object.mpm_ot_object_mode", icon="OUTLINER_OB_SURFACE")
+
+        # 7:30
+        pie.column()
+
+        # 4:30
+        pie.column()
+
+    def gpen_menu(self, pie):
+
+        mode = getMode()
+
+        # 9:00
+        pie.operator("object.mpm_ot_edit_mode", icon="CURVE_PATH")
+
+        # 3:00
+        if mode == "OBJECT":
+            pie.operator(
+                "wm.call_menu",
+                text="GreasePencil Context Menu",
+                icon="CUBE").name = "VIEW3D_MT_object_context_menu"
+        else:
+            pie.operator(
+                "wm.call_menu",
+                text="Edit GreasePencil Context Menu",
                 icon="CUBE").name = "VIEW3D_MT_edit_curve_context_menu"
         # 6:00
         pie.column()
