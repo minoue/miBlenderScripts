@@ -6,7 +6,7 @@ bl_info = {
     "name": "MayaPieMenu",
     "description": "View Modes",
     "author": "Michitaka Inoue",
-    "version": (0, 2, 3),
+    "version": (0, 2, 4),
     "blender": (2, 80, 0),
     "warning": "",
     "wiki_url": "",
