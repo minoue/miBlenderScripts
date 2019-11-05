@@ -19,6 +19,8 @@ Navigationや選択の挙動はもうちょっとMaya寄りに、かつ基本的
 * 3D View → Mesh → Mesh (Global) → New keymap
 * 3D View → Curve → Curve (Global) → Disable: Call Menu(Right Mouse)
 * 3D View → Curve → Curve (Global) → New keymap
+* Image → UV Editor → UV Editor (Global) → New keymap
+
 
 * **New keymap**
 
