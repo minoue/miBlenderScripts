@@ -6,7 +6,7 @@ bl_info = {
     "name": "MayaPieMenu",
     "description": "View Modes",
     "author": "Michitaka Inoue",
-    "version": (0, 2, 4),
+    "version": (0, 2, 5),
     "blender": (2, 80, 0),
     "warning": "",
     "wiki_url": "",
@@ -120,6 +120,33 @@ class MPM_OT_face_mode(bpy.types.Operator):
         return {'FINISHED'}
 
 
+class MPM_OT_uvVertex_mode(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_uvvertex_mode"
+    bl_label = "UV Vertex Mode"
+
+    def execute(self, context):
+        bpy.context.scene.tool_settings.uv_select_mode = 'VERTEX'
+        return {'FINISHED'}
+
+
+class MPM_OT_uvEdge_mode(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_uvedge_mode"
+    bl_label = "UV Edge Mode"
+
+    def execute(self, context):
+        bpy.context.scene.tool_settings.uv_select_mode = 'EDGE'
+        return {'FINISHED'}
+
+
+class MPM_OT_uvFace_mode(bpy.types.Operator):
+    bl_idname = "object.mpm_ot_uvface_mode"
+    bl_label = "UV Face Mode"
+
+    def execute(self, context):
+        bpy.context.scene.tool_settings.uv_select_mode = 'FACE'
+        return {'FINISHED'}
+
+
 class MPM_OT_object_mode(bpy.types.Operator):
     bl_idname = "object.mpm_ot_object_mode"
     bl_label = "Object Mode"
@@ -184,16 +211,19 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
         obj = bpy.context.object
 
-        if obj.type == "MESH":
-            self.mesh_menu(pie)
-        elif obj.type == "CURVE":
-            self.curve_menu(pie)
-        elif obj.type == "SURFACE":
-            self.surface_menu(pie)
-        elif obj.type == "GPENCIL":
-            self.gpen_menu(pie)
+        if bpy.context.area.type == "IMAGE_EDITOR":
+            self.uv_menu(pie)
         else:
-            self.default_menu(pie, obj.type)
+            if obj.type == "MESH":
+                self.mesh_menu(pie)
+            elif obj.type == "CURVE":
+                self.curve_menu(pie)
+            elif obj.type == "SURFACE":
+                self.surface_menu(pie)
+            elif obj.type == "GPENCIL":
+                self.gpen_menu(pie)
+            else:
+                self.default_menu(pie, obj.type)
 
     def default_menu(self, pie, typ):
 
@@ -290,7 +320,7 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         left_box1.separator()
         sub_menu1 = left_box1.box()
         sub_menu1.operator(
-            "object.mpm_ot_dummy_command", text="cmd", icon="BLENDER")
+            "object.mpm_ot_dummy_command", text=bpy.context.area.type, icon="BLENDER")
         sub_menu1.operator(
             "object.mpm_ot_dummy_command", text="cmd", icon="BLENDER")
 
@@ -438,6 +468,34 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         # 4:30
         pie.column()
 
+    def uv_menu(self, pie):
+
+        mode = getMode()
+
+        # 9:00
+        pie.operator("object.mpm_ot_uvvertex_mode", icon="VERTEXSEL")
+
+        # 3:00
+        pie.operator("wm.call_menu", text="UV Context Menu", icon="CUBE").name = "IMAGE_MT_uvs_context_menu"
+
+        # 6:00
+        pie.operator("object.mpm_ot_uvface_mode", icon="FACESEL")
+
+        # 12:00
+        pie.operator("object.mpm_ot_uvedge_mode", icon="EDGESEL")
+
+        # 10:30
+        pie.column()
+
+        # 1:30
+        pie.column()
+
+        # 7:30
+        pie.column()
+
+        # 4:30
+        pie.column()
+
 
 class VIEW3D_MT_maya_pie_menu_shift(Menu):
     bl_label = "View"
@@ -482,6 +540,9 @@ classes = (
     MPM_OT_vertex_mode,
     MPM_OT_edge_mode,
     MPM_OT_face_mode,
+    MPM_OT_uvVertex_mode,
+    MPM_OT_uvEdge_mode,
+    MPM_OT_uvFace_mode,
     MPM_OT_object_mode,
     MPM_OT_edit_mode,
     MPM_OT_move,
