@@ -102,7 +102,8 @@ https://blender.stackexchange.com/questions/124195/blender-2-8-enter-select-box-
 #### Box select
 
 通常のBox選択も同じ挙動に
-* 3D View -> Object Mode -> 3D View Tool: Select Box -> 上から二つ目のModeをDifferenceに。
+* 3D View -> Object Mode -> 3D View Tool: Select Box -> 上から2つ目のModeをDifferenceに。
+* 3D View -> Object Mode -> 3D View Tool: Select Box -> 上から4つ目のModeをExtendに。
 
 ### View 2D
 
