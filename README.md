@@ -48,6 +48,8 @@ MayaのAltナビゲーション。
 
     (元々の'Make Segment'は失われるがカーブコンテキストメニューからアクセス可能)
 
+* Image → Image (global) → Disable "View Center"
+* Image → Image (global) → New Keymap F: image.view_selected
 
 #### Disable tweak move/translate
 
@@ -73,6 +75,14 @@ Mayaと同じWERキーによるマニピュレータの切り替え
 * 3D View → Mesh → Mesh (Global) → New Keymap E: wm.tool_set_by_id, builtin.rotate
 * 3D View → Mesh → Mesh (Global) → New Keymap R: wm.tool_set_by_id, builtin.scale
 * 3D View → Mesh → Mesh (Global) → Extrude and Move on Normals → Disable
+
+#### WER UV Editor
+* Image → UV Editor → UV Editor (Global) → New Keymap W: wm.tool_set_by_id, builtin.move
+* Image → UV Editor → UV Editor (Global) → New Keymap W: wm.tool_set_by_id, builtin.rotate
+* Image → UV Editor → UV Editor (Global) → New Keymap W: wm.tool_set_by_id, builtin.scale
+* Image → UV Editor → UV Editor (Global) → Disable: Rotate E key
+
+
 
 #### Box Selection while using transform manipulator
 
