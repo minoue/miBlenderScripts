@@ -51,6 +51,10 @@ MayaのAltナビゲーション。
 * Image → Image (global) → Disable "View Center"
 * Image → Image (global) → New Keymap F: image.view_selected
 
+#### Local Viewでズームさせない
+MayaのIsolateSelectionと同じ挙動
+* 3D View -> 3D View(Global) -> Local View -> turn off "Frame Selected" 
+
 #### Disable tweak move/translate
 
 マニピュレーターの外をドラッグするとオブジェクトが動いてしまうのを防止
@@ -139,6 +143,7 @@ Image viewやUV viewでもAltナビゲーション
 
 #### Interface
 * Display : Python Tooltips (Script書くとき便利)
+* Line Width : HiDPIだと線が細くなるのでThickがいいかも
 
 #### Themes
 * Node Editor -> Noodle Curving : 5 or 好きな値(ノードエディタの線はカーブしてほしい)
