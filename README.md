@@ -164,12 +164,10 @@ Image viewやUV viewでもAltナビゲーション
 
 #### Units
 
-1 unit = 1cm にする
-
+キャラクター作業等で必要であれば表示をcmにする
+Scene properties ->
 * Unit System : Metric
 * Length: Centimeters
-
-![](./img/gridSize.png)
 
 ### カメラ
 
