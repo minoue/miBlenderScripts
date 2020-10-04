@@ -174,3 +174,7 @@ Scene properties ->
 * Nキー → ビュー → Lock Camera to View ON
 
     これをしないとカメラビューの時Alt操作でカメラを動かせない
+
+### Viewport Overlay
+* Statisticは個人的に表示したい
+    ![](./img/statisticView.png)
