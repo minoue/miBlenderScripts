@@ -298,8 +298,8 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         pie.operator("object.mpm_ot_object_mode", icon="CUBE")
 
         # 7:30
-        # pie.operator("object.mpm_ot_higher_subdiv")
-        pie.column()
+        pie.operator("view3d.localview")
+        # pie.column()
 
         # 4:30
         # pie.operator("object.mpm_ot_lower_subdiv")
