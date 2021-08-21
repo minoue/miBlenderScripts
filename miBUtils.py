@@ -35,8 +35,53 @@ class MIU_OT_maya_group(bpy.types.Operator):
         return {'FINISHED'}
 
 
+class MIU_OT_higher_subdiv(bpy.types.Operator):
+    bl_idname = "object.miu_ot_higher_subdiv"
+    bl_label = "Subdiv+"
+
+    def execute(self, context):
+        sel = bpy.context.selected_objects
+        for i in sel:
+
+            # Set active object
+            bpy.context.view_layer.objects.active = i
+
+            mods = [m.type for m in i.modifiers]
+            if 'SUBSURF' in mods:
+                # If subsurf modifier exists, add +1
+                currentLevel = i.modifiers['Subdivision'].levels
+                newLevel = currentLevel + 1
+                i.modifiers['Subdivision'].levels = newLevel
+            else:
+                # otherwise, add new subsurf modifier
+                bpy.ops.object.modifier_add(type='SUBSURF')
+
+        return {'FINISHED'}
+
+
+class MIU_OT_lower_subdiv(bpy.types.Operator):
+    bl_idname = "object.miu_ot_lower_subdiv"
+    bl_label = "Subdiv-"
+
+    def execute(self, context):
+        sel = bpy.context.selected_objects
+        for i in sel:
+            mods = [m.type for m in i.modifiers]
+            bpy.context.view_layer.objects.active = i
+            if 'SUBSURF' in mods:
+                currentLevel = i.modifiers['Subdivision'].levels
+                newLevel = currentLevel - 1
+                i.modifiers['Subdivision'].levels = newLevel
+            else:
+                bpy.ops.object.modifier_add(type='SUBSURF')
+
+        return {'FINISHED'}
+
+
 classes = (
     MIU_OT_maya_group,
+    MIU_OT_higher_subdiv,
+    MIU_OT_lower_subdiv
 )
 
 

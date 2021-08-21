@@ -39,49 +39,6 @@ def getMode():
             return "EDIT"
 
 
-class MPM_OT_higher_subdiv(bpy.types.Operator):
-    bl_idname = "object.mpm_ot_higher_subdiv"
-    bl_label = "Subdiv+"
-
-    def execute(self, context):
-        sel = bpy.context.selected_objects
-        for i in sel:
-
-            # Set active object
-            bpy.context.view_layer.objects.active = i
-
-            mods = [m.type for m in i.modifiers]
-            if 'SUBSURF' in mods:
-                # If subsurf modifier exists, add +1
-                currentLevel = i.modifiers['Subdivision'].levels
-                newLevel = currentLevel + 1
-                i.modifiers['Subdivision'].levels = newLevel
-            else:
-                # otherwise, add new subsurf modifier
-                bpy.ops.object.modifier_add(type='SUBSURF')
-
-        return {'FINISHED'}
-
-
-class MPM_OT_lower_subdiv(bpy.types.Operator):
-    bl_idname = "object.mpm_ot_lower_subdiv"
-    bl_label = "Subdiv-"
-
-    def execute(self, context):
-        sel = bpy.context.selected_objects
-        for i in sel:
-            mods = [m.type for m in i.modifiers]
-            bpy.context.view_layer.objects.active = i
-            if 'SUBSURF' in mods:
-                currentLevel = i.modifiers['Subdivision'].levels
-                newLevel = currentLevel - 1
-                i.modifiers['Subdivision'].levels = newLevel
-            else:
-                bpy.ops.object.modifier_add(type='SUBSURF')
-
-        return {'FINISHED'}
-
-
 class MPM_OT_dummy_command(bpy.types.Operator):
     bl_idname = "object.mpm_ot_dummy_command"
     bl_label = ""
@@ -130,7 +87,7 @@ class MPM_OT_uvVertex_mode(bpy.types.Operator):
 
 
 class MPM_OT_uvEdge_mode(bpy.types.Operator):
-    bl_idname = "object.mpm_ot_uvedge_mode"
+    bl_idname = "oject.mpm_ot_uvedge_mode"
     bl_label = "UV Edge Mode"
 
     def execute(self, context):
@@ -302,7 +259,6 @@ class VIEW3D_MT_maya_pie_menu(Menu):
         # pie.column()
 
         # 4:30
-        # pie.operator("object.mpm_ot_lower_subdiv")
         pie.column()
 
         pie.separator()
@@ -548,8 +504,6 @@ classes = (
     MPM_OT_move,
     MPM_OT_rotate,
     MPM_OT_scale,
-    MPM_OT_higher_subdiv,
-    MPM_OT_lower_subdiv,
     MPM_OT_localView,
 )
 
