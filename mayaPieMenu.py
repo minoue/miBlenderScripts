@@ -23,7 +23,12 @@ def getMode():
     active_object = bpy.context.active_object.type
 
     if object_mode == "OBJECT":
-        return "OBJECT"
+        if active_object == "MESH":
+            return "OBJECT"
+        elif active_object == "EMPTY":
+            return "EMPTY"
+        else:
+            return None
     else:
         if active_object == "MESH":
             edit_mode = tuple(bpy.context.tool_settings.mesh_select_mode)
@@ -298,10 +303,7 @@ class VIEW3D_MT_maya_pie_menu(Menu):
             "object.mpm_ot_localview",
             text="Isolate Selected",
             icon="HIDE_OFF")
-        top_menu.prop(
-            overlay,
-            'show_wireframes',
-            text="Wireframe On Shaded")
+        top_menu.prop(overlay, 'show_wireframes', text="Wireframe On Shaded")
         top_menu.operator(
             "object.mpm_ot_dummy_command", text="cmd A", icon="BLENDER")
         top_menu.operator(
