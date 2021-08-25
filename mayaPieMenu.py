@@ -189,11 +189,7 @@ class VIEW3D_MT_maya_pie_menu(Menu):
 
         # 3:00
         menu_type = "{} Context Menu".format(typ)
-        if typ == "CAMERA":
-            icon_type = "CAMERA_DATA"
-        elif typ == "LIGHT":
-            icon_type = "LIGHT"
-        pie.operator("wm.call_menu", text=menu_type, icon=icon_type).name = "VIEW3D_MT_object_context_menu" 
+        pie.operator("wm.call_menu", text=menu_type).name = "VIEW3D_MT_object_context_menu" 
 
         # 6:00
         pie.column()
