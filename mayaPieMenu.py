@@ -87,7 +87,7 @@ class MPM_OT_uvVertex_mode(bpy.types.Operator):
 
 
 class MPM_OT_uvEdge_mode(bpy.types.Operator):
-    bl_idname = "oject.mpm_ot_uvedge_mode"
+    bl_idname = "object.mpm_ot_uvedge_mode"
     bl_label = "UV Edge Mode"
 
     def execute(self, context):
