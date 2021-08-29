@@ -28,6 +28,7 @@ class MIU_OT_maya_group(bpy.types.Operator):
 
             for i in sel:
                 i.parent = loc
+                i.matrix_parent_inverse = loc.matrix_world.inverted()
 
             if len(parents) == 1:
                 loc.parent = list(parents)[0]
