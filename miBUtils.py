@@ -4,7 +4,7 @@ bl_info = {
     "name": "mi_blender_utils",
     "description": "small utilies",
     "author": "Michitaka Inoue",
-    "version": (0, 1, 0),
+    "version": (0, 1, 1),
     "blender": (2, 80, 0),
     "warning": "",
     "wiki_url": "",
@@ -15,6 +15,7 @@ bl_info = {
 class MIU_OT_maya_group(bpy.types.Operator):
     bl_idname = "object.miu_ot_maya_group"
     bl_label = "Group"
+    bl_options = {'UNDO'}
 
     def execute(self, context):
 
@@ -39,6 +40,7 @@ class MIU_OT_maya_group(bpy.types.Operator):
 class MIU_OT_higher_subdiv(bpy.types.Operator):
     bl_idname = "object.miu_ot_higher_subdiv"
     bl_label = "Subdiv+"
+    bl_options = {'UNDO'}
 
     def execute(self, context):
         sel = bpy.context.selected_objects
@@ -63,6 +65,7 @@ class MIU_OT_higher_subdiv(bpy.types.Operator):
 class MIU_OT_lower_subdiv(bpy.types.Operator):
     bl_idname = "object.miu_ot_lower_subdiv"
     bl_label = "Subdiv-"
+    bl_options = {'UNDO'}
 
     def execute(self, context):
         sel = bpy.context.selected_objects
