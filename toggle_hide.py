@@ -28,7 +28,7 @@ from ctypes import c_int, c_float, c_void_p, c_short, \
 
 bl_info = {
     "name": "Toggle Hide",
-    "location": "3D View / Outliner, (Hotkey J)",
+    "location": "3D View / Outliner, (Hotkey H)",
     "version": (0, 1, 0),
     "blender": (2, 83, 0),
     "description": "Toggle object visibility of outliner selection",
@@ -313,6 +313,16 @@ class OUTLINER_OT_toggle_hide(bpy.types.Operator):
         walked = set()
         types = {ID_OB, ID_LAYERCOLL}
 
+        def getAllDecendents(obj, result):
+            if not obj.children:
+                # if no children
+                result.append(obj)
+            
+            for child in obj.children:
+                result.append(child)
+                for c in child.children:
+                    getAllDecendents(c, result)
+
         for tree in subtrees_get(root):
             if tree.select and tree.idcode in types:
                 obj = tree.as_object(root)
@@ -325,15 +335,20 @@ class OUTLINER_OT_toggle_hide(bpy.types.Operator):
 
                 # Is a bpy.types.Object instance
                 elif isinstance(obj, bpy.types.Object):
-                    if obj.hide_get():
-                        obj.hide_set(False)
-                        obj.select_set(True)
-                        # Prevent outliner selection sync.
-                        wmstruct.outliner_sync_select_dirty &= ~1
+                    children = []
+                    getAllDecendents(obj, children)
+                    children.insert(0, obj)
 
-                    # Is a visible object instance. Hide it.
-                    else:
-                        obj.hide_set(True)
+                    for c in set(children):
+                        if c.hide_get():
+                            c.hide_set(False)
+                            c.select_set(True)
+                            # Prevent outliner selection sync.
+                            wmstruct.outliner_sync_select_dirty &= ~1
+
+                        # Is a visible object instance. Hide it.
+                        else:
+                            c.hide_set(True)
 
                 # Traversed objects are tracked to prevent multiple instances from
                 # toggling eachother.
@@ -354,11 +369,11 @@ class OUTLINER_OT_toggle_hide(bpy.types.Operator):
         kc = bpy.context.window_manager.keyconfigs.addon.keymaps
 
         km = kc.get("Object Mode") or kc.new("Object Mode")
-        kmi = km.keymap_items.new(cls.bl_idname, 'J', 'PRESS')
+        kmi = km.keymap_items.new(cls.bl_idname, 'H', 'PRESS')
         cls._keymaps.append((km, kmi))
 
         km = kc.get("Outliner") or kc.new("Outliner", space_type='OUTLINER')
-        kmi = km.keymap_items.new("outliner.toggle_hide", 'J', 'PRESS')
+        kmi = km.keymap_items.new("outliner.toggle_hide", 'H', 'PRESS')
         cls._keymaps.append((km, kmi))
 
     @classmethod
