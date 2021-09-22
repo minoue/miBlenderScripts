@@ -6,7 +6,7 @@ bl_info = {
     "name": "maya_group",
     "description": "group objects like maya",
     "author": "Michitaka Inoue",
-    "version": (0, 1, 2),
+    "version": (0, 1, 3),
     "blender": (2, 80, 0),
     "warning": "",
     "wiki_url": "",
@@ -27,8 +27,8 @@ class MIU_OT_maya_group(bpy.types.Operator):
             # Craete new empty
             bpy.ops.object.empty_add(type='PLAIN_AXES')
             empty = bpy.context.selected_objects[0]
-            
-            # 
+
+            #
             parents = set([i.parent for i in sel])
 
             bpy.context.view_layer.objects.active = empty
@@ -38,14 +38,14 @@ class MIU_OT_maya_group(bpy.types.Operator):
                 i.select_set(True)
                 bpy.ops.object.parent_set(keep_transform=True)
 
-            # If selected objects are located in a same hierarchy, parent the empty axis back 
-            # to the original parent
+            # If selected objects are located in a same hierarchy,
+            # parent the empty axis back to the original parent
             if len(parents) == 1:
-                grandparent = list(parents)[0]
-                if grandparent is not None:
-                    empty.parent = grandparent
-                    empty.matrix_parent_inverse = grandparent.matrix_world.inverted()
-                
+                gp = list(parents)[0]
+                if gp is not None:
+                    empty.parent = gp
+                    empty.matrix_parent_inverse = gp.matrix_world.inverted()
+
         return {'FINISHED'}
 
 
@@ -61,8 +61,10 @@ def register():
         bpy.utils.register_class(cls)
 
     wm = bpy.context.window_manager
-    km = wm.keyconfigs.addon.keymaps.new(name='Object Mode', space_type = 'EMPTY')
-    kmi = km.keymap_items.new(MIU_OT_maya_group.bl_idname, 'G', 'PRESS', ctrl=True)
+    km = wm.keyconfigs.addon.keymaps.new(
+        name='Object Mode', space_type='EMPTY')
+    kmi = km.keymap_items.new(
+        MIU_OT_maya_group.bl_idname, 'G', 'PRESS', ctrl=True)
     addon_keymaps.append((km, kmi))
 
 
@@ -78,7 +80,6 @@ def unregister():
         km.keymap_items.remove(kmi)
 
     addon_keymaps.clear()
-
 
 
 if __name__ == "__main__":

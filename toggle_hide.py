@@ -122,6 +122,7 @@ class TreeElement(Structure):
         """Get/set the selection of a tree element."""
         def getter(self):
             return bool(self.store_elem.contents.flag & 2)
+
         def setter(self, state):
             if state:
                 self.store_elem.contents.flag |= 2
@@ -134,6 +135,7 @@ class TreeElement(Structure):
         """Get/set the expansion of a tree element."""
         def getter(self):
             return not bool(self.tseflag & 1)
+
         def setter(self, state):
             if state:
                 self.store_elem.contents.flag &= ~1
@@ -216,6 +218,7 @@ class SpaceOutliner(Structure):
         ("tree", listbase(TreeElement)),
         # ... (cont)
     )
+
     @classmethod
     def get_tree(cls, so: bpy.types.SpaceOutliner) -> TreeElement:
         return cls.from_address(so.as_pointer()).tree.first
@@ -317,7 +320,7 @@ class OUTLINER_OT_toggle_hide(bpy.types.Operator):
             if not obj.children:
                 # if no children
                 result.append(obj)
-            
+
             for child in obj.children:
                 result.append(child)
                 for c in child.children:
@@ -387,6 +390,7 @@ def register():
     if version < (2, 83):
         raise AssertionError("Minimum Blender version 2.83 required")
     bpy.utils.register_class(OUTLINER_OT_toggle_hide)
+
 
 def unregister():
     bpy.utils.unregister_class(OUTLINER_OT_toggle_hide)

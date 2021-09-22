@@ -36,7 +36,7 @@ class MIU_OT_maya_delete(bpy.types.Operator):
                     bpy.ops.mesh.delete(type='FACE')
         else:
             bpy.ops.object.delete(use_global=False, confirm=False)
-                
+
         return {'FINISHED'}
 
 
@@ -52,7 +52,8 @@ def register():
         bpy.utils.register_class(cls)
 
     wm = bpy.context.window_manager
-    km = wm.keyconfigs.addon.keymaps.new(name='Mesh', space_type = 'EMPTY')
+    km = wm.keyconfigs.addon.keymaps.new(
+        name='Mesh', space_type='EMPTY')
     kmi = km.keymap_items.new(MIU_OT_maya_delete.bl_idname, 'X', 'PRESS')
     addon_keymaps.append((km, kmi))
 
@@ -69,7 +70,6 @@ def unregister():
         km.keymap_items.remove(kmi)
 
     addon_keymaps.clear()
-
 
 
 if __name__ == "__main__":
