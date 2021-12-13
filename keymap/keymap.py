@@ -1,4 +1,4 @@
-keyconfig_version = (3, 0, 12)
+keyconfig_version = (3, 0, 42)
 keyconfig_data = \
 [("3D View",
   {"space_type": 'VIEW_3D', "region_type": 'WINDOW'},
@@ -447,7 +447,13 @@ keyconfig_data = \
        ],
       },
      ),
-    ("view3d.select_or_deselect_all", {"type": 'LEFTMOUSE', "value": 'CLICK'}, None),
+    ("view3d.select",
+     {"type": 'LEFTMOUSE', "value": 'CLICK'},
+     {"properties":
+      [("deselect_all", True),
+       ],
+      },
+     ),
     ("view3d.select",
      {"type": 'LEFTMOUSE', "value": 'CLICK', "shift": True},
      {"properties":
