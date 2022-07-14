@@ -4,8 +4,8 @@ bl_info = {
     "name": "toggle_subsurf",
     "description": "toggle and control subsurf modifier",
     "author": "Michitaka Inoue",
-    "version": (0, 1, 0),
-    "blender": (2, 80, 0),
+    "version": (0, 2, 0),
+    "blender": (3, 2, 1),
     "warning": "",
     "wiki_url": "",
     "category": ""
@@ -24,14 +24,15 @@ class MIU_OT_higher_subdiv(bpy.types.Operator):
             # Set active object
             bpy.context.view_layer.objects.active = i
 
-            mods = [m.type for m in i.modifiers]
-            if 'SUBSURF' in mods:
-                # If subsurf modifier exists, add +1
-                currentLevel = i.modifiers['Subdivision'].levels
-                newLevel = currentLevel + 1
-                i.modifiers['Subdivision'].levels = newLevel
-            else:
-                # otherwise, add new subsurf modifier
+            mods = [m for m in i.modifiers]
+            found = False
+            for mod in mods:
+                if mod.type == 'SUBSURF':
+                    mod.levels = mod.levels + 1
+                    found = True
+                    break
+
+            if not found:
                 bpy.ops.object.modifier_add(type='SUBSURF')
 
         return {'FINISHED'}
@@ -45,14 +46,14 @@ class MIU_OT_lower_subdiv(bpy.types.Operator):
     def execute(self, context):
         sel = bpy.context.selected_objects
         for i in sel:
-            mods = [m.type for m in i.modifiers]
+
             bpy.context.view_layer.objects.active = i
-            if 'SUBSURF' in mods:
-                currentLevel = i.modifiers['Subdivision'].levels
-                newLevel = currentLevel - 1
-                i.modifiers['Subdivision'].levels = newLevel
-            else:
-                bpy.ops.object.modifier_add(type='SUBSURF')
+            mods = [m for m in i.modifiers]
+
+            for mod in mods:
+                if mod.type == 'SUBSURF':
+                    mod.levels = mod.levels - 1
+                    break
 
         return {'FINISHED'}
 
